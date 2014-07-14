@@ -1,51 +1,50 @@
 # Theres 11 Black balls and 1 Red Ball
-# If Paola decide to go first what's the probability that she will win?
-# On the other hand if she decides to go second, what's the probability that she will win?
-
 Blackball = 11
 Redball = 1
 
-#Probability of selecting a black ball
+# Probability of selecting a black ball
 i = 0
-tries = 12
-Paola1 = []
-Paola2 = []
 count = 0
+tries = Blackball + Redball
+Player1 = []
+Player2 = []
+
 for i in range(i,tries):
     x = (Blackball-i)/(Redball+Blackball-i)
     if i % 2 == 0:
-        Paola1.insert(i-count,x)
+        Player1.insert(i-count,x)
         count += 1
     else:
-        Paola2.insert(i-count,x)
+        Player2.insert(i-count,x)
         
-#Winning the game
+# Probability of Winning the game
 i, n, y = 0, 0, 0
 count = 0
-x = []
-Pr1, Pr2 = [], []
+Win_if_1 = []
 
 for i in range(i,tries):
     if i == 0:
-        Pr1.insert(i, 1-Paola1[i])
+        Win_if_1.insert(i, 1-Player1[i])
     
     elif i >> 0 and i % 2 == 0:
         sum,x = 1,[]
         for y in range(0,n):
-            x.insert(y,Paola1[y]*Paola2[y])
+            x.insert(y,Player1[y]*Player2[y])
         for a in x:
             sum *= a
-        Pr1.insert(i-count,(1-Paola1[i-count])*sum)
+        Win_if_1.insert(i-count,(1-Player1[i-count])*sum)
                 
     else:
         n +=1
         count += 1
 
-Pr1sum = 0
-for a in Pr1:
-    Pr1sum += a
-print('If Paola decides to go first the probability of winning is', round(Pr1sum,4))
-print('\nTherefore if Paola decides to go second the probability of winning is', 1-round(Pr1sum,4))
+Win_if_1_sum = 0
+for a in Win_if_1:
+    Win_if_1_sum += a
+
+# Present Probabilities
+print('If Paola decides to go first the probability of winning is', round(Win_if_1_sum,4))
+print('\nTherefore if Paola decides to go second the probability of winning is', round(1-Win_if_1_sum,4))
 
       
  
